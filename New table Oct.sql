@@ -1,0 +1,16 @@
+-- select department.dname,department.dnumber,dlocation from department,dept_locations where department.dnumber = dept_locations.dnumber;
+-- select department.dname,pname,department.dnumber from department,project where dnumber=dnum order by department.dname;
+-- select department.dname,pname,department.dnumber,dlocation from department,project,dept_locations where department.dnumber=dnum and department.dnumber = dept_locations.dnumber order by department.dname;
+-- select department.dname, dept_locations.dlocation from department inner join dept.location on department.dnumber = dept_locations.dnumber;
+select count(distinct CountryCode) from city;
+select count(distinct Code) from country;
+select * from city;
+select * from country;
+select code from country where code not in(select countrycode from city);
+select country.name,count(city.name) from country,city where country.code=city.CountryCode group by CountryCode;
+select country.name,count(city.name) from country left outer join city on country.code = city.countrycode group by country.name order by count(city.name);
+-- create view Bossy as select country.name,count(city.name) from country left outer join city on country.code = city.countrycode group by country.name order by count(city.name);
+-- select distinct countrycode from city;
+select * from bossy;
+select dept_locations.dlocation,count(ssn) from dept_locations,employee where dept_locations.dnumber = employee.dno group by dept_locations.dlocation;
+select dept_locations.dlocation,count(ssn) from dept_locations,employee where dept_locations.dnumber = employee.dno group by dept_locations.dlocation having count(employee.ssn) > 3;
